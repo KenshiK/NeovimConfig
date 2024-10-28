@@ -4,21 +4,14 @@ return {
   {
     "folke/tokyonight.nvim",
     name = "tokyonight",
-    lazy = false,
+    lazy = true,
     opts = { style = "moon" },
-
-    -- Set this colortheme as default
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
-    end,
   },
 
   -- catppuccin
   {
     "catppuccin/nvim",
-    lazy = true,
+    lazy = false,
     name = "catppuccin",
     opts = {
       integrations = {
@@ -69,5 +62,10 @@ return {
         end,
       },
     },
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme catppuccin]])
+    end,
+    priority = 1000, -- make sure to load this before all the other start plugins
   },
 }
