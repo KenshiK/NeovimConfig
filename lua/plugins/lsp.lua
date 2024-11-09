@@ -101,6 +101,7 @@ return {
           end,
         }
       })
+
       require('lspconfig').lua_ls.setup({
         settings = {
           Lua = {
