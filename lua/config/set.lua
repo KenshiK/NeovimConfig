@@ -10,7 +10,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 -- Save undo history
-vim.opt.undodir = "C:/Users/Megaport/.vim/undodir"
+vim.opt.undodir = vim.fn.expand('$HOME/.vim/undodir')
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.backup = false
