@@ -87,12 +87,13 @@ return {
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', '<F4>', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
         end,
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = {'csharp_ls', 'lua_ls'},
+        ensure_installed = {'lua_ls'},
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"
