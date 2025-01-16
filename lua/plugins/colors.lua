@@ -22,6 +22,7 @@ return {
         flash = true,
         grug_far = true,
         gitsigns = true,
+        harpoon = true,
         headlines = true,
         illuminate = true,
         indent_blankline = { enabled = true },
@@ -64,7 +65,7 @@ return {
     },
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme catppuccin]])
+      vim.cmd([[colorscheme catppuccin-mocha]])
     end,
     priority = 1000, -- make sure to load this before all the other start plugins
   },

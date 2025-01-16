@@ -35,6 +35,32 @@ vim.keymap.set('n', '<leader>sn', function()
   builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files (config)' })
 
+function vim.getVisualSelection()
+	local current_clipboard_content = vim.fn.getreg('"')
+
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	vim.fn.setreg('"', current_clipboard_content)
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+-- Add visual selection search
+vim.keymap.set('v', '<space>st', function()
+	local text = vim.getVisualSelection()
+	builtin.grep_string({ search = text })
+end, { desc = '[S]earch selected [T]ext by grep' })
+
+-- Use telelscope display to search lsp references
+vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = '[G]o to [R]eference' })
+
 -- Netrw Keymap
 -- vim.keymap.set("n", "<leader>pv", '<cmd>Neotree<cr>', { desc = 'Open file Tree' })
 
@@ -75,3 +101,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Refactoring.nvim
+vim.keymap.set("x", "<leader>re", ":Refactor extract ")
+vim.keymap.set("x", "<leader>rf", ":Refactor extract_to_file ")
+
+vim.keymap.set("x", "<leader>rv", ":Refactor extract_var ")
+
+vim.keymap.set({ "n", "x" }, "<leader>ri", ":Refactor inline_var")
+
+vim.keymap.set( "n", "<leader>rI", ":Refactor inline_func")
+
+vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
+vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
