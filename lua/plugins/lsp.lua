@@ -10,17 +10,42 @@ return {
     lazy = false,
     opts = {},
   },
-
+  -- Snippets Zone 
+  {
+    "rafamadriz/friendly-snippets"
+  },
+  {
+    'L3MON4D3/LuaSnip',
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
+  {
+    'saadparwaiz1/cmp_luasnip'
+  },
+  -- Snippets Zone End (Other things may have been touched)
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
+    lazy = false,
+    dependencies = {
+      {'L3MON4D3/LuaSnip', build = "make install_jsregexp"},
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+    },
     config = function()
       local cmp = require('cmp')
 
       cmp.setup({
         sources = {
           {name = 'nvim_lsp'},
+          {name = 'luasnip'},
+          {name = 'path'},
+          {name = 'buffer'},
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
@@ -30,7 +55,8 @@ return {
         }),
         snippet = {
           expand = function(args)
-            vim.snippet.expand(args.body)
+            -- vim.snippet.expand(args.body)
+            require('luasnip').lsp_expand(args.body)
           end,
         },
         preselect = 'item',
@@ -83,7 +109,6 @@ return {
           vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
           vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
           vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
           vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
