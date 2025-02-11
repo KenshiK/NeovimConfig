@@ -32,7 +32,5 @@ return {
         -- file_browser = { ... }
       },
     })
-    -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-    --require("telescope").load_extension("harpoon")
   end,
 }
