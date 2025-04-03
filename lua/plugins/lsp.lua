@@ -9,8 +9,16 @@ return {
     'williamboman/mason.nvim',
     lazy = false,
     opts = {},
+    init = function()
+      require('mason').setup ({
+        registries = {
+          'github:mason-org/mason-registry',
+          'github:crashdummyy/mason-registry',
+        }
+      })
+    end
   },
-  -- Snippets Zone 
+  -- Snippets Zone
   {
     "rafamadriz/friendly-snippets"
   },
@@ -32,7 +40,7 @@ return {
     event = 'InsertEnter',
     lazy = false,
     dependencies = {
-      {'L3MON4D3/LuaSnip', build = "make install_jsregexp"},
+      { 'L3MON4D3/LuaSnip', build = "make install_jsregexp" },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
@@ -42,16 +50,17 @@ return {
 
       cmp.setup({
         sources = {
-          {name = 'nvim_lsp'},
-          {name = 'luasnip'},
-          {name = 'path'},
-          {name = 'buffer'},
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'luasnip' },
+          { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'buffer' },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<CR>'] = cmp.mapping.confirm({select = true}),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         snippet = {
           expand = function(args)
@@ -70,16 +79,15 @@ return {
       })
     end
   },
-
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-    event = {'BufReadPre', 'BufNewFile'},
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
     },
     init = function()
       -- Reserve a space in the gutter
@@ -102,7 +110,7 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
-          local opts = {buffer = event.buf}
+          local opts = { buffer = event.buf }
 
           vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -111,14 +119,14 @@ return {
           vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
           vim.keymap.set('n', '<F4>', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
         end,
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = {'lua_ls'},
+        ensure_installed = { 'lua_ls' },
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"

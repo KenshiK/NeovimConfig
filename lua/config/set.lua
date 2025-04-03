@@ -4,9 +4,9 @@ vim.opt.relativenumber = true
 -- Show current line number
 vim.opt.nu = true
 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Save undo history
@@ -42,3 +42,5 @@ vim.opt.fileformats = "unix,dos,mac"
 -- vim.opt.shell = 'pwsh.exe'
 
 vim.opt.conceallevel = 1
+
+vim.diagnostic.config({ virtual_text = true })

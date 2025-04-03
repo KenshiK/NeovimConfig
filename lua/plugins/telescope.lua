@@ -9,6 +9,9 @@ return {
   config = function()
     require("telescope").load_extension("undo")
     require("telescope").setup({
+      defaults = {
+                path_display={"smart"}
+      },
       -- the rest of your telescope config goes here
       extensions = {
         undo = {
