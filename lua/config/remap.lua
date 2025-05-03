@@ -71,8 +71,8 @@ vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = 'Open UndoT
 -- :LspInstall [lspName] (sans préciser le nom il y a des suggestions selon le fichier courant)
 
 -- Déplace le contenu séléctionné
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move the text bloc down' })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move the text bloc up' })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move the text block down' })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move the text block up' })
 
 -- Garde le curseur au milieu de l'ecran quand tu déplaces de page en page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Go down a page (centered)' })
@@ -110,3 +110,13 @@ vim.keymap.set({ "n", "x" }, "<leader>ri", ":Refactor inline_var")
 vim.keymap.set( "n", "<leader>rI", ":Refactor inline_func")
 vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
 vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
+
+-- Quickfix
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>", {desc = 'QUICKFIX: Go to next'})
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>", {desc = 'QUICKFIX: Go to previous'})
+vim.keymap.set("n", "<M-x>", "<cmd>cclose<CR>", {desc = 'QUICKFIX: Close quickfix window'})
+vim.keymap.set("n", "<M-d>", function()
+    vim.diagnostic.setqflist()
+    vim.cmd.cclose()
+    vim.cmd.cnext()
+end, {desc = 'QUICKFIX: Navigate diagnostics'})

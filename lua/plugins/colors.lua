@@ -7,11 +7,53 @@ return {
     lazy = true,
     opts = { style = "moon" },
   },
-
+  -- kanagawa
+  {
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    lazy = true,
+    opts = { style = "moon" },
+  },
+  -- sonokai
+  {
+    "sainnhe/sonokai",
+    name = "sonokai",
+    lazy = true,
+    opts = function()
+            vim.g.sonokai_enable_italic = true
+        end
+  },
+  -- cyberdream
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    config = function()
+        require("cyberdream").setup({
+            saturation = 0.8,
+            italic_comments = true,
+            highlights = {
+                Function = { fg = "#dcdcad", bg = "NONE", italic = false },
+                ["@lsp.mod.static"] = { italic = true },
+            },
+            extensions = {
+                telescope = true,
+                treesitter = true,
+                whichkey = true,
+                mini = true,
+            }
+        })
+    vim.cmd([[colorscheme cyberdream]])
+    end
+  },
+  -- vim-code-dark
+  {
+    "tomasiser/vim-code-dark",
+    lazy = true,
+  },
   -- catppuccin
   {
     "catppuccin/nvim",
-    lazy = false,
+    lazy = true,
     name = "catppuccin",
     opts = {
       integrations = {
@@ -65,7 +107,7 @@ return {
     },
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme catppuccin-mocha]])
+      -- vim.cmd([[colorscheme catppuccin-mocha]])
     end,
     priority = 1000, -- make sure to load this before all the other start plugins
   },

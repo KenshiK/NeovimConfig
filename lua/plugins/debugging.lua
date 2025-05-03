@@ -41,14 +41,14 @@ return
           end
         end
 
-        vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
-        vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
+        vim.keymap.set("n", "<space>b", dap.toggle_breakpoint, { desc = "DEBUG: Toggle breakpoint" })
+        vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "DEBUG: Run to cursor" })
 
         vim.keymap.set("n", "<space>g?", function()
           ui.eval(nil, { enter = true })
-        end, { desc = "Eval value under cursor" })
+        end, { desc = "DEBUG: Eval value under cursor" })
 
-        vim.keymap.set("n", "<F6>", dap.continue, { desc = "DEBUG: Continue" })
+        vim.keymap.set("n", "<F6>", dap.continue, { desc = "DEBUG: Start/Continue" })
         vim.keymap.set("n", "<F7>", dap.step_into, { desc = "DEBUG: Step into" })
         vim.keymap.set("n", "<F8>", dap.step_over, { desc = "DEBUG: Step over" })
         vim.keymap.set("n", "<F9>", dap.step_out, { desc = "DEBUG: Step out" })

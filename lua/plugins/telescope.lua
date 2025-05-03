@@ -10,7 +10,7 @@ return {
     require("telescope").load_extension("undo")
     require("telescope").setup({
       defaults = {
-                path_display={"smart"}
+                path_display={"truncate"},
       },
       -- the rest of your telescope config goes here
       extensions = {
