@@ -23,10 +23,31 @@ return {
             vim.g.sonokai_enable_italic = true
         end
   },
+  -- onedark
+  {
+    "navarasu/onedark.nvim",
+    name = "onedark",
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('onedark').setup {
+        -- style = 'darker'
+        style = 'warmer',
+        highlights = {
+          ["@lsp.mod.declaration"] =  { fmt = 'bold'},
+          ["@lsp.mod.deprecated"] =  { fmt = 'strikethrough'},
+          ["@lsp.mod.static"] =  { fmt = 'italic'},
+          ["@lsp.mod.abstract"] =  { fmt = 'underline'},
+        }
+      }
+      -- Enable theme
+      require('onedark').load()
+    end
+  },
   -- cyberdream
   {
     "scottmckendry/cyberdream.nvim",
-    lazy = false,
+    lazy = true,
     config = function()
         require("cyberdream").setup({
             saturation = 0.8,
@@ -42,7 +63,7 @@ return {
                 mini = true,
             }
         })
-    vim.cmd([[colorscheme cyberdream]])
+    -- vim.cmd([[colorscheme cyberdream]])
     end
   },
   -- vim-code-dark
