@@ -8,9 +8,11 @@ return {
   },
   config = function()
     require("telescope").load_extension("undo")
+    require("telescope").load_extension("noice")
     require("telescope").setup({
       defaults = {
                 path_display={"truncate"},
+                file_ignore_patterns = { "%__virtual.cs$" },
       },
       -- the rest of your telescope config goes here
       extensions = {
