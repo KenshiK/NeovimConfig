@@ -1,4 +1,27 @@
-return {
+return
+{
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+        require('lualine').setup({
+            options = { theme = 'onedark' },
+            sections = {
+                lualine_a = { 'mode' },
+                lualine_b = { {'filetype', icon = { align = 'left' }}, 'lsp_status'},
+                lualine_c = { {'filename', path = 1}, 'diagnostics' },
+                lualine_x = { 'diff', 'branch' },
+                lualine_y = { 'encoding', 'fileformat', 'progress' },
+                lualine_z = { 'location' }
+            },
+            extensions = { 
+                    'lazy', 'mason',
+                    -- 'nvim-dap-ui', 'fzf' 
+                }
+        })
+    end
+}
+--[[
+    {
   'echasnovski/mini.statusline',
   version = '*',
   config = function()
@@ -192,3 +215,4 @@ return {
     end
   end
 }
+]]
