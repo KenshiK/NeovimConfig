@@ -40,7 +40,13 @@ return
           sections = {
             lualine_x = {
               {
-                require("noice").api.statusline.mode.get,
+                function ()
+                    local value = require("noice").api.statusline.mode.get
+                    if string.match(value, '-- INSERT --') or string.match(value, '-- VISUAL --') or string.match(value, '-- VISUAL LINE --') then
+                        return ''
+                    end
+                    return value
+                end,
                 cond = require("noice").api.statusline.mode.has,
                 color = { fg = "#ff9e64" },
               }
