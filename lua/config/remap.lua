@@ -3,7 +3,7 @@ vim.g.have_nerd_font = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Desactivate highlight after a search' })
 
 -- Open terminal
-vim.keymap.set('n', '<leader>t', '<cmd>horizontal term<CR>i', { desc = 'Split open terminal' })
+vim.keymap.set('n', '<leader>te', '<cmd>horizontal term<CR>i', { desc = 'Split open terminal' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
