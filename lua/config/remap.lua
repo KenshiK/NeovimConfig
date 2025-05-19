@@ -53,7 +53,7 @@ function vim.getVisualSelection()
 end
 
 -- Add visual selection search
-vim.keymap.set('v', '<space>st', function()
+vim.keymap.set('v', '<space>sw', function()
 	local text = vim.getVisualSelection()
 	builtin.grep_string({ search = text })
 end, { desc = '[S]earch selected [T]ext by grep' })
@@ -83,9 +83,10 @@ vim.keymap.set("n", "n", "nzzzv", { desc = 'Next instance of searched word (cent
 vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous instance of searched word (centered)' })
 
 -- Copie dans le registre système/presse-papier
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {desc = 'Copy in paperclip'})
+vim.keymap.set("n", "<leader>Y", "\"+Y", {desc = 'Copy in paperclip'})
+vim.keymap.set({"n", "v"}, "<leader>p", "\"+p", {desc = 'Paste from paperclip'})
+vim.keymap.set("n", "<leader>P", "\"+P", {desc = 'Paste from paperclip'})
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
