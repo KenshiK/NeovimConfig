@@ -71,8 +71,8 @@ vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = 'Open UndoT
 -- :LspInstall [lspName] (sans préciser le nom il y a des suggestions selon le fichier courant)
 
 -- Déplace le contenu séléctionné
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move the text block down' })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move the text block up' })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = 'Move the text block down' })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = 'Move the text block up' })
 
 -- Garde le curseur au milieu de l'ecran quand tu déplaces de page en page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Go down a page (centered)' })
