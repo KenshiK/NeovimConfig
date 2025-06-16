@@ -38,11 +38,6 @@ return {
     end
 
 
-    vim.keymap.set("n", "q", function()
-      dap.close()
-      dapui.close()
-    end, {})
-
     vim.keymap.set("n", "<leader>dr", dap.repl.toggle, {})
     vim.keymap.set("n", "<leader>dj", dap.down, {})
     vim.keymap.set("n", "<leader>dk", dap.up, {})
@@ -56,8 +51,8 @@ return {
     end, { desc = "DEBUG: Eval value under cursor" })
 
     vim.keymap.set("n", "<F6>", dap.continue, { desc = "DEBUG: Start/Continue" })
-    vim.keymap.set("n", "<F7>", dap.step_into, { desc = "DEBUG: Step into" })
-    vim.keymap.set("n", "<F8>", dap.step_over, { desc = "DEBUG: Step over" })
+    vim.keymap.set("n", "<F7>", dap.step_over, { desc = "DEBUG: Step over" })
+    vim.keymap.set("n", "<F8>", dap.step_into, { desc = "DEBUG: Step into" })
     vim.keymap.set("n", "<F9>", dap.step_out, { desc = "DEBUG: Step out" })
     vim.keymap.set("n", "<F10>", dap.step_back, { desc = "DEBUG: Step back" })
     vim.keymap.set("n", "<F11>", dap.restart, { desc = "DEBUG: Restart" })
