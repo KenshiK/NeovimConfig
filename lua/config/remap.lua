@@ -2,8 +2,8 @@ vim.g.have_nerd_font = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Desactivate highlight after a search' })
 
--- Open terminal
-vim.keymap.set('n', '<leader>te', '<cmd>horizontal term<CR>i', { desc = 'Split open terminal' })
+-- Open terminal (Using plugin Floaterm)
+vim.keymap.set('n', '<leader>te', '<cmd>FloatermToggle<CR>', { desc = 'Open floating terminal' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -53,7 +53,7 @@ function vim.getVisualSelection()
 end
 
 -- Add visual selection search
-vim.keymap.set('v', '<space>st', function()
+vim.keymap.set('v', '<space>sw', function()
 	local text = vim.getVisualSelection()
 	builtin.grep_string({ search = text })
 end, { desc = '[S]earch selected [T]ext by grep' })
@@ -71,8 +71,8 @@ vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = 'Open UndoT
 -- :LspInstall [lspName] (sans préciser le nom il y a des suggestions selon le fichier courant)
 
 -- Déplace le contenu séléctionné
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move the text block down' })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move the text block up' })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = 'Move the text block down' })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = 'Move the text block up' })
 
 -- Garde le curseur au milieu de l'ecran quand tu déplaces de page en page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Go down a page (centered)' })
@@ -83,9 +83,10 @@ vim.keymap.set("n", "n", "nzzzv", { desc = 'Next instance of searched word (cent
 vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous instance of searched word (centered)' })
 
 -- Copie dans le registre système/presse-papier
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {desc = 'Copy in paperclip'})
+vim.keymap.set("n", "<leader>Y", "\"+Y", {desc = 'Copy in paperclip'})
+vim.keymap.set({"n", "v"}, "<leader>p", "\"+p", {desc = 'Paste from paperclip'})
+vim.keymap.set("n", "<leader>P", "\"+P", {desc = 'Paste from paperclip'})
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

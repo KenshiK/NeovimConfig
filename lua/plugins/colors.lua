@@ -1,19 +1,4 @@
 return {
-
-  -- tokyonight
-  {
-    "folke/tokyonight.nvim",
-    name = "tokyonight",
-    lazy = true,
-    opts = { style = "moon" },
-  },
-  -- kanagawa
-  {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa",
-    lazy = true,
-    opts = { style = "moon" },
-  },
   -- sonokai
   {
     "sainnhe/sonokai",
