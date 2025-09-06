@@ -40,7 +40,7 @@ return
                     enabled = true,
                     relative = "editor",
                     position = {
-                        row = 8,
+                        row = "55%",
                         col = "50%",
                     },
                     size = {
