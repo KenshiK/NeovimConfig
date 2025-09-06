@@ -40,6 +40,7 @@ vim.opt.fileformats = "unix,dos,mac"
 -- set Powershell as default terminal
 -- /!\ Breaks lazygit and probably other things depending on their installation in the default terminal
 -- vim.opt.shell = 'pwsh.exe'
+-- vim.opt.shell = "C:\\Users\\mbaki\\AppData\\Local\\Programs\\nu\\bin\\nu.exe"
 
 vim.opt.conceallevel = 1
 
