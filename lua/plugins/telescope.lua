@@ -83,8 +83,9 @@ return {
 
     -- Add visual selection search
     {'<leader>sw', function()
-        require('telescope.builtin').grep_string({ search = GetVisualSelection() })
-    end, desc = '[S]earch selected [T]ext by grep' },
+        local text = GetVisualSelection()
+        require('telescope.builtin').grep_string({ search = text })
+    end, mode = "v", desc = '[S]earch selected [T]ext by grep' },
 
     -- Undotree
     {"<leader>u", "<cmd>Telescope undo<cr>", desc = 'Open UndoTree' },
