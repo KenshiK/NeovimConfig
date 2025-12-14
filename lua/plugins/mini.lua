@@ -18,5 +18,9 @@ return {
     })
 
     require('mini.comment').setup()
+    require('mini.bracketed').setup({
+        file = { suffix = '', options = {} },
+        window = { suffix = '', options = {} },
+    })
     end
 }

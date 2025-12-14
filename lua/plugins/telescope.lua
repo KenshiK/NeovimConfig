@@ -1,4 +1,4 @@
-local function GetVisualSelection()
+function GetVisualSelection()
     local current_clipboard_content = vim.fn.getreg('"')
 
     vim.cmd('noau normal! "vy"')
