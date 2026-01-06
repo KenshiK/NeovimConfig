@@ -45,3 +45,31 @@ vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = t
 -- vim.diagnostic.config({ virtual_text = true })
 
 vim.g.have_nerd_font = true
+
+
+-- TEST
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- stops line wrapping from being confusing
+vim.o.breakindent = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menu,popup,fuzzy,preview,noselect'
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
+vim.opt.cpoptions:append('I')
+
+vim.g.netrw_banner = 0

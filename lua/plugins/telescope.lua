@@ -66,6 +66,7 @@ return {
     {'<leader>sr', require('telescope.builtin').resume,  desc = '[S]earch [R]esume' },
     {'<leader>s.', require('telescope.builtin').oldfiles,  desc = '[S]earch Recent Files ("." for repeat)' },
     {'<leader><leader>', require('telescope.builtin').buffers,  desc = '[ ] Find existing buffers' },
+    { '<leader>sm', '<cmd>Telescope notify<CR>', mode = {"n"}, desc = '[S]earch [M]essage', },
 
     -- Slightly advanced example of overriding default behavior and theme
     {'<leader>/', function()
