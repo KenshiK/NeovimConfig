@@ -9,6 +9,14 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- Show current line number
+vim.opt.nu = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- Save undo history
 vim.opt.undodir = vim.fn.expand('$HOME/.vim/undodir')
 vim.opt.undofile = true
@@ -21,15 +29,10 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
--- No idea what it does
---vim.opt.termguicolors = true
-
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
 vim.opt.updatetime = 50
-
-vim.opt.colorcolumn = "100"
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -40,9 +43,37 @@ vim.opt.fileformats = "unix,dos,mac"
 -- set Powershell as default terminal
 -- /!\ Breaks lazygit and probably other things depending on their installation in the default terminal
 -- vim.opt.shell = 'pwsh.exe'
--- vim.opt.shell = "C:\\Users\\mbaki\\AppData\\Local\\Programs\\nu\\bin\\nu.exe"
 
 vim.opt.conceallevel = 1
-
--- vim.diagnostic.config({ virtual_text = true })
 vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true }, })
+-- vim.diagnostic.config({ virtual_text = true })
+
+vim.g.have_nerd_font = true
+
+
+-- TEST
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- stops line wrapping from being confusing
+vim.o.breakindent = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menu,popup,fuzzy,preview,noselect'
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
+vim.opt.cpoptions:append('I')
+
+vim.g.netrw_banner = 0

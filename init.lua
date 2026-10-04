@@ -1,4 +1,5 @@
-require("config.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require("config.remap")
 require("config.set")
-require("config.luasnip")
