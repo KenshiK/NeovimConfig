@@ -6,5 +6,7 @@ winget install zig
 winget install ripgrep
 winget install fzf
 
+winget install --id tree-sitter.tree-sitter-cli
+
 winget install zoxide
 zoxide init powershell --cmd cd > $profile
