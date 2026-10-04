@@ -3,7 +3,7 @@ require('mini.basics').setup()
 require('mini.icons').setup()
 require('mini.comment').setup()
 require('mini.splitjoin').setup()
-require('mini.notify').setup()
+-- require('mini.notify').setup()
 -- require('mini.pick').setup()
 
 -- Completion
