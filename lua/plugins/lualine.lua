@@ -8,7 +8,7 @@ return {
         custom_onedark.normal.c.bg = '#232326'
         require('lualine').setup({
             options = {
-                    theme = custom_onedark, --'onedark',
+                    -- theme = custom_onedark, --'onedark',
                     component_separators = '',
                     section_separators = { left = '', right = '' },
                 },

@@ -52,3 +52,7 @@ callback = function(event)
 end,
 })
 
+vim.keymap.set('n', '<C-right>', '<cmd>vertical resize -5<cr>', { desc = 'Make the window smaller vertically' })
+vim.keymap.set('n', '<C-left>', '<cmd>vertical resize +5<cr>', { desc = 'Make the window bigger vertically' })
+vim.keymap.set('n', '<C-down>', '<cmd>horizontal resize +2<cr>', { desc = 'Make the window bigger horizontally' })
+vim.keymap.set('n', '<C-up>', '<cmd>horizontal resize -2<cr>', { desc = 'Make the window smaller vertically' })
